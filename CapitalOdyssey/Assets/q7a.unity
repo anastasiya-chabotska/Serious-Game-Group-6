@@ -452,7 +452,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 537339188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e9ead86b86ac49f187801aae840a15e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c597b0a547554e8282cae6ad89251d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &560909120
@@ -956,8 +956,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 537339193}
-        m_TargetAssemblyTypeName: canvas, Assembly-CSharp
-        m_MethodName: OptionB
+        m_TargetAssemblyTypeName: q7script, Assembly-CSharp
+        m_MethodName: Invest20
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1089,8 +1089,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 537339193}
-        m_TargetAssemblyTypeName: canvas, Assembly-CSharp
-        m_MethodName: OptionA
+        m_TargetAssemblyTypeName: q7script, Assembly-CSharp
+        m_MethodName: Invest10
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

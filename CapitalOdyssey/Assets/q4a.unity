@@ -959,7 +959,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 537339193}
         m_TargetAssemblyTypeName: canvas, Assembly-CSharp
-        m_MethodName: Scene5
+        m_MethodName: Option5B
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1092,7 +1092,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 537339193}
         m_TargetAssemblyTypeName: canvas, Assembly-CSharp
-        m_MethodName: Scene5
+        m_MethodName: Option5B
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
