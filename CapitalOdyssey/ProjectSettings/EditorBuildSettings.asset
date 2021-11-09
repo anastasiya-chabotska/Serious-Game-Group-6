@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/q2a.unity
     guid: a253b22444f144259814883664079655
   - enabled: 1
+    path: Assets/q3a.unity
+    guid: 17c9277fec4807c4b95066bd7895fe04
+  - enabled: 1
+    path: Assets/q4a.unity
+    guid: e67c76565f8ebd5459aa92c59f5bbd61
+  - enabled: 1
     path: Assets/q4b.unity
     guid: 6ad2ed722c9564f01b40c29947aaa77b
   - enabled: 1
