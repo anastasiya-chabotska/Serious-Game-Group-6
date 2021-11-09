@@ -33,10 +33,23 @@ public class canvas : MonoBehaviour
         SceneManager.LoadScene("q4b");
     }
 
-    	public void OptionC(){
+
+        //when CUNY is selected
+    public void OptionCuny(){
         Debug.Log("change scene");
+        PersistentData.Instance.GoToCuny();
         SceneManager.LoadScene("q3a");
     }
+
+
+    public void OptionPrivate(){
+
+        Debug.Log("change scene");
+        PersistentData.Instance.GoToPrivate();
+        SceneManager.LoadScene("q3a");
+
+    }
+
 	public void OptionD(){
         Debug.Log("change scene");
         SceneManager.LoadScene("q4a");
@@ -50,6 +63,34 @@ public class canvas : MonoBehaviour
     public void Option5A(){
         Debug.Log("change scene");
         SceneManager.LoadScene("q7b");
+    }
+
+
+  public void OptionLoan(){
+        Debug.Log("change scene");
+        PersistentData.Instance.GetALoan();
+        SceneManager.LoadScene("q6a");
+    }
+
+    public void OptionJob(){
+
+        Debug.Log("change scene");
+        PersistentData.Instance.GetAPartTimeJobCollege();
+        SceneManager.LoadScene("q4a");
+    
+    }
+
+     public void OptionPublicSector(){
+        Debug.Log("change scene");
+        PersistentData.Instance.PulicSectorJob();
+        SceneManager.LoadScene("q7");
+    }
+
+
+  public void OptionPrivateSector(){
+        Debug.Log("change scene");
+        PersistentData.Instance.PrivateSectorJob();
+        SceneManager.LoadScene("q7");
     }
 
       public void Option5B(){
@@ -66,4 +107,7 @@ public class canvas : MonoBehaviour
         Debug.Log("change scene");
         SceneManager.LoadScene("q7");
     }
+
+
+  
 }

@@ -560,7 +560,58 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6756}
     - Class: 114
+      Script: {instanceID: 23378}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/results.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 2700}
+    - Class: 114
+      Script: {instanceID: 2934}
+    - Class: 114
+      Script: {instanceID: 5548}
+    - Class: 114
+      Script: {instanceID: 6198}
+    - Class: 114
+      Script: {instanceID: 6386}
+    - Class: 114
+      Script: {instanceID: 6756}
+    - Class: 114
       Script: {instanceID: 8878}
+    - Class: 114
+      Script: {instanceID: 35244}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1540,4 +1591,5 @@ ScriptsOnlyBuild:
   - Assets/q7.unity
   - Assets/q7a.unity
   - Assets/q7b.unity
+  - Assets/results.unity
   playerPath: /Users/anastasiyachabotska/Desktop/game/Serious-Game-Group-6/CapitalOdyssey/game.app

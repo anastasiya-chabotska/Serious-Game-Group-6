@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class q7script : MonoBehaviour
@@ -9,6 +10,8 @@ public class q7script : MonoBehaviour
 
     GameObject[] button1;
     GameObject[] button2;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,38 @@ public class q7script : MonoBehaviour
 
       public void OptionB(){
         Debug.Log("change scene");
-        SceneManager.LoadScene("q7b");
+        SceneManager.LoadScene("q5");
+    }
+
+
+    public void Invest10(){
+
+        PersistentData.Instance.Invest10();
+        SceneManager.LoadScene("q5");
+
+    }
+
+    public void Invest20(){
+
+      PersistentData.Instance.Invest20();
+       SceneManager.LoadScene("q5");
+    }
+
+
+    public void Save10(){
+        PersistentData.Instance.Save10();
+        loadEnd();
+
+    }
+
+    public void Save20(){
+        PersistentData.Instance.Save20();
+        loadEnd();
+    }
+
+      public void loadEnd(){
+        SceneManager.LoadScene("results");
+    
+       
     }
 }
