@@ -41,4 +41,29 @@ public class canvas : MonoBehaviour
         Debug.Log("change scene");
         SceneManager.LoadScene("q4a");
     }
+
+    public void Scene5(){
+        SceneManager.LoadScene("q5");
+    }
+
+        
+    public void Option5A(){
+        Debug.Log("change scene");
+        SceneManager.LoadScene("q7b");
+    }
+
+      public void Option5B(){
+        Debug.Log("change scene");
+        SceneManager.LoadScene("q6a");
+    }
+    
+    public void Option6A(){
+        Debug.Log("change scene");
+        SceneManager.LoadScene("q7");
+    }
+
+      public void Option6B(){
+        Debug.Log("change scene");
+        SceneManager.LoadScene("q7");
+    }
 }
