@@ -12,6 +12,10 @@ public class PersistentData : MonoBehaviour
     [SerializeField] double earnings;
     [SerializeField] double investments;
     [SerializeField] double savings;
+    [SerializeField] double invest_percent;
+    [SerializeField] double savings_percent;
+    [SerializeField] bool isLoan;
+    [SerializeField] bool loanForgiven;
     public const int CUNY_COST = 20000;
     public const int PRIVATE_COST = 80000;
     public const int CUNY_LOAN_INTEREST = 746;
@@ -36,6 +40,10 @@ public class PersistentData : MonoBehaviour
        earnings = 0;
        investments = 0;
        savings = 0;
+       invest_percent = 0;
+       savings_percent = 0;
+       isLoan = false;
+       loanForgiven = false;
 
     }
 
@@ -69,14 +77,16 @@ public class PersistentData : MonoBehaviour
 
     public void GetALoan(){
 
+        isLoan = true;
+
         if (isCuny && !isPrivate){
             loan = education_cost + CUNY_LOAN_INTEREST;
-            education_cost = 0;
+            // education_cost = 0;
         }
 
         else if (isPrivate && !isCuny){
             loan = education_cost + PRIVATE_LOAN_INTEREST;
-            education_cost = 0;
+            // education_cost = 0;
         }
 
 
@@ -86,10 +96,22 @@ public class PersistentData : MonoBehaviour
       earnings =+ 2 * PART_TIME_JOB;
     }
 
+
+    public void PartTimeJob(){
+        earnings =+ 17 * PART_TIME_JOB;
+    }
+
+
+    public void FullTimeJob(){
+        earnings =+ 17 * FULL_TIME_JOB;
+    }
+
     public void PulicSectorJob(){
 
         earnings =+ 13 * PUBLIC_SECTOR_JOB; //13 years, from 22-35
         loan = 0; //forgive loan
+        loanForgiven = true;
+        // earnings -= education_cost;
 
 
     }
@@ -98,6 +120,8 @@ public class PersistentData : MonoBehaviour
        public void PrivateSectorJob(){
 
         earnings =+ 13 * PRIVATE_SECTOR_JOB; //13 years, from 22-35
+        // earnings -= education_cost;
+        // earnings -= loan;
     
 
     }
@@ -105,14 +129,16 @@ public class PersistentData : MonoBehaviour
     public void Invest10(){
 
 investments = earnings * 0.1 * 1.12; // ~12% rate 
-earnings -= earnings * 0.1;
+invest_percent = 0.1;
+
     }
 
 
        public void Invest20(){
 
 investments = earnings * 0.2 * 1.12; // ~12% rate 
-earnings -= earnings * 0.2;
+invest_percent = 0.2;
+
     }
 
 
@@ -120,20 +146,58 @@ earnings -= earnings * 0.2;
 
 
 savings = earnings * 0.1;
-earnings -= earnings *0.1; 
+
+savings_percent = 0.1;
     }
 
     public void Save20(){
 
         savings = earnings * 0.2;
-earnings -= earnings *0.2; 
+
+savings_percent = 0.2;
 
     }
 
 
 
     public string Results(){
-        return "From 18 to 35 years you:\nHave Earned: "+(earnings-loan-education_cost)+"\nHave in Savings: "+savings+"\nHave in Investments: "+investments;
+        string result = "From the age of 18 to 35: ";
+        if (isCuny){
+            result += "\nYou chose to go to CUNY College which costed $"+education_cost;
+
+        }
+        if (isPrivate){
+            result += "\nYou chose to go to a Private College which costed $"+education_cost;
+        }
+
+        if (isLoan){
+            result += "\nYou also decided to take a loan which resulted in following interest added to your education cost: $";
+            if (isCuny){
+                result += CUNY_LOAN_INTEREST;
+            }
+            else if(isPrivate){
+                result += PRIVATE_LOAN_INTEREST;
+            }
+
+            if (loanForgiven){
+                result += "\nBy choosing to work in a public sector, your loan was forgiven";
+            }
+
+
+            // if (isLoan==false && (isCuny || isPrivate)){
+
+            // }
+        }
+
+        result+="\nOver the years, you earned a total of $"+earnings;
+        result += "\nFrom that amount, you invested  "+(invest_percent*100)+"%, and now your investments total in $"+investments;
+        result += "\nAlso, you chose to save "+(savings_percent*100)+"%, and now you have $"+savings+" in savings.";
+
+        return result;
+
+
+       
+        // return "From 18 to 35 years you:\nEarned: "+(earnings)+"\nHave in Savings: "+savings+"\nHave in Investments: "+investments;
     }
 
     // public void SetName(string n)
