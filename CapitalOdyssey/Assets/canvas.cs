@@ -93,6 +93,19 @@ public class canvas : MonoBehaviour
         SceneManager.LoadScene("q7");
     }
 
+
+      public void FullTimeJob(){
+        Debug.Log("change scene");
+        PersistentData.Instance.FullTimeJob();
+        SceneManager.LoadScene("q7");
+    }
+
+       public void PartTimeJob(){
+        Debug.Log("change scene");
+        PersistentData.Instance.PartTimeJob();
+        SceneManager.LoadScene("q7");
+    }
+
       public void Option5B(){
         Debug.Log("change scene");
         SceneManager.LoadScene("q6a");
@@ -106,6 +119,10 @@ public class canvas : MonoBehaviour
       public void Option6B(){
         Debug.Log("change scene");
         SceneManager.LoadScene("q7");
+    }
+
+    public void loadEnd(){
+        SceneManager.LoadScene("results");
     }
 
 
