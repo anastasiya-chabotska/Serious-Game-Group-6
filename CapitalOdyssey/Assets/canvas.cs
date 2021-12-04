@@ -121,6 +121,9 @@ public class canvas : MonoBehaviour
         SceneManager.LoadScene("q7");
     }
 
+
+  
+
     public void loadEnd(){
         SceneManager.LoadScene("results");
     }

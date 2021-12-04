@@ -67,4 +67,23 @@ public class q7script : MonoBehaviour
     
        
     }
+
+
+    //if the player chooses to invest, set the flag to true so you know what scene to load after informational scene
+          public void InvestingInfoYes(){
+          PersistentData.Instance.invest = true;
+        SceneManager.LoadScene("investing_information");
+    }
+
+    public void InvestingInfoNo(){
+         SceneManager.LoadScene("investing_information");
+    }
+
+
+    public void ContinueInvestmentInfo(){
+        if (PersistentData.Instance.invest = false){
+            SceneManager.LoadScene("q5");
+        }
+        else SceneManager.LoadScene("q7a");
+    }
 }

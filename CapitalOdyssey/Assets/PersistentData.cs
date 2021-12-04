@@ -25,6 +25,8 @@ public class PersistentData : MonoBehaviour
     public const int PUBLIC_SECTOR_JOB = 50000; //per year
     public const int PRIVATE_SECTOR_JOB = 75000; //per year
 
+    public bool invest = false;
+
 
     // [SerializeField] string playerName;
     // [SerializeField] int currentLevelIndex;
