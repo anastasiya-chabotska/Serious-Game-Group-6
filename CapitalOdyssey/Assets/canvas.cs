@@ -62,15 +62,28 @@ public class canvas : MonoBehaviour
         
     public void Option5A(){
         Debug.Log("change scene");
-        SceneManager.LoadScene("q7b");
+        PersistentData.Instance.save = true;
+        SceneManager.LoadScene("apy copy");
+        //SceneManager.LoadScene("q7b");
+    }
+
+    public void DontSave(){
+        SceneManager.LoadScene("apy copy");
     }
 
 
   public void OptionLoan(){
         Debug.Log("change scene");
         PersistentData.Instance.GetALoan();
+        SceneManager.LoadScene("loans_info");
+        //SceneManager.LoadScene("q6a");
+    }
+
+    public void AfterLoanInfo(){
         SceneManager.LoadScene("q6a");
     }
+
+//player picked to get a job when fafsa ended
 
     public void OptionJob(){
 
@@ -83,32 +96,42 @@ public class canvas : MonoBehaviour
      public void OptionPublicSector(){
         Debug.Log("change scene");
         PersistentData.Instance.PulicSectorJob();
-        SceneManager.LoadScene("q7");
+       SceneManager.LoadScene("Public_Private info");
+
+        //SceneManager.LoadScene("q7");
     }
 
 
   public void OptionPrivateSector(){
         Debug.Log("change scene");
         PersistentData.Instance.PrivateSectorJob();
-        SceneManager.LoadScene("q7");
+        SceneManager.LoadScene("Public_Private info");
+        //SceneManager.LoadScene("q7");
     }
 
 
       public void FullTimeJob(){
         Debug.Log("change scene");
         PersistentData.Instance.FullTimeJob();
-        SceneManager.LoadScene("q7");
+        SceneManager.LoadScene("Taxes");
+        //SceneManager.LoadScene("q7");
     }
 
        public void PartTimeJob(){
         Debug.Log("change scene");
         PersistentData.Instance.PartTimeJob();
-        SceneManager.LoadScene("q7");
+        SceneManager.LoadScene("Taxes");
+        //SceneManager.LoadScene("q7");
     }
 
       public void Option5B(){
         Debug.Log("change scene");
-        SceneManager.LoadScene("q6a");
+        SceneManager.LoadScene("part_timeVSwork_study copy");
+        //SceneManager.LoadScene("q6a");
+    }
+
+    public void Taxes(){
+        SceneManager.LoadScene("Taxes");
     }
     
     public void Option6A(){
@@ -119,6 +142,35 @@ public class canvas : MonoBehaviour
       public void Option6B(){
         Debug.Log("change scene");
         SceneManager.LoadScene("q7");
+    }
+
+    public void AfterTaxesInfo(){
+        Debug.Log("After taxes");
+        if (PersistentData.Instance.isCuny == true || PersistentData.Instance.isPrivate == true){
+            SceneManager.LoadScene("q6a");
+        }
+        else 
+        SceneManager.LoadScene("q8");
+    }
+
+	public void PublicPrivateCont(){
+        Debug.Log("change scene");
+        SceneManager.LoadScene("q8");
+    }
+	public void MovingOutCont(){
+        Debug.Log("change scene");
+        SceneManager.LoadScene("bills_information");
+    }
+
+    public void AfterBillsInfo(){
+        SceneManager.LoadScene("q7");
+    }
+
+    public void AfterAPY(){
+        if (PersistentData.Instance.save == false){
+            SceneManager.LoadScene("results");
+        }
+        else SceneManager.LoadScene("q7b");
     }
 
 

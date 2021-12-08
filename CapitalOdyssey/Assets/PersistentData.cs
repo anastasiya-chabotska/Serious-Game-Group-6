@@ -7,8 +7,8 @@ public class PersistentData : MonoBehaviour
     [SerializeField] int score;
     [SerializeField] double loan;
     [SerializeField] double education_cost;
-    [SerializeField] bool isCuny;
-    [SerializeField] bool isPrivate;
+    public bool isCuny = false;
+    public bool isPrivate = false;
     [SerializeField] double earnings;
     [SerializeField] double investments;
     [SerializeField] double savings;
@@ -16,16 +16,21 @@ public class PersistentData : MonoBehaviour
     [SerializeField] double savings_percent;
     [SerializeField] bool isLoan;
     [SerializeField] bool loanForgiven;
-    public const int CUNY_COST = 20000;
-    public const int PRIVATE_COST = 80000;
-    public const int CUNY_LOAN_INTEREST = 746;
-    public const int PRIVATE_LOAN_INTEREST = 2984;
+    [SerializeField] double taxes;
+
+    public const int CUNY_COST = 6930*2;
+    public const int PRIVATE_COST = 13475*2;
+    public const int CUNY_LOAN_INTEREST = (int)(CUNY_COST*0.0466);
+    public const int PRIVATE_LOAN_INTEREST = (int)(PRIVATE_COST*0.0466);
     public const int PART_TIME_JOB = 15*20*52; //per year
-    public const int FULL_TIME_JOB = 15*40*52; //per year
-    public const int PUBLIC_SECTOR_JOB = 50000; //per year
-    public const int PRIVATE_SECTOR_JOB = 75000; //per year
+    //public const int FULL_TIME_JOB = 15*40*52; //per year
+    public const int PUBLIC_SECTOR_JOB = 92068; //per year
+    public const int PRIVATE_SECTOR_JOB = 76988; //per year
+    public const int AVERAGE_SALARY = 36864; //per year
+    public const int BILLS = (94 + 46 + 36 + 39 + 240 + 1621)*12; //per year
 
     public bool invest = false;
+    public bool save = false;
 
 
     // [SerializeField] string playerName;
@@ -96,21 +101,25 @@ public class PersistentData : MonoBehaviour
 
     public void GetAPartTimeJobCollege(){
       earnings =+ 2 * PART_TIME_JOB;
+      taxes =+ 2 * CalculateTax(PART_TIME_JOB);
     }
 
 
     public void PartTimeJob(){
-        earnings =+ 17 * PART_TIME_JOB;
+        earnings =+ 17 * AVERAGE_SALARY/2;
+        taxes =+ 17 * CalculateTax(AVERAGE_SALARY/2);
     }
 
 
     public void FullTimeJob(){
-        earnings =+ 17 * FULL_TIME_JOB;
+        earnings =+ 17 * AVERAGE_SALARY;
+          taxes =+ 17 * CalculateTax(AVERAGE_SALARY);
     }
 
     public void PulicSectorJob(){
 
         earnings =+ 13 * PUBLIC_SECTOR_JOB; //13 years, from 22-35
+          taxes =+ 13 * CalculateTax(PUBLIC_SECTOR_JOB);
         loan = 0; //forgive loan
         loanForgiven = true;
         // earnings -= education_cost;
@@ -122,6 +131,7 @@ public class PersistentData : MonoBehaviour
        public void PrivateSectorJob(){
 
         earnings =+ 13 * PRIVATE_SECTOR_JOB; //13 years, from 22-35
+          taxes =+ 13 * CalculateTax(PRIVATE_SECTOR_JOB);
         // earnings -= education_cost;
         // earnings -= loan;
     
@@ -130,7 +140,7 @@ public class PersistentData : MonoBehaviour
 
     public void Invest10(){
 
-investments = earnings * 0.1 * 1.12; // ~12% rate 
+investments = (earnings - taxes - BILLS) * 0.1 * 1.10; // ~10% rate 
 invest_percent = 0.1;
 
     }
@@ -138,7 +148,7 @@ invest_percent = 0.1;
 
        public void Invest20(){
 
-investments = earnings * 0.2 * 1.12; // ~12% rate 
+investments = (earnings -taxes - BILLS) * 0.2 * 1.10; // ~10% rate 
 invest_percent = 0.2;
 
     }
@@ -147,17 +157,33 @@ invest_percent = 0.2;
     public void Save10(){
 
 
-savings = earnings * 0.1;
+savings = (earnings -taxes - BILLS)  * 0.1 * 1.0006;
 
 savings_percent = 0.1;
     }
 
     public void Save20(){
 
-        savings = earnings * 0.2;
+        savings = (earnings -taxes - BILLS) * 0.2 * 1.0006;
 
 savings_percent = 0.2;
 
+    }
+
+    public double CalculateTax(int amount){
+        if (amount <=9950){
+            return amount * 0.1; //10%
+        }
+        else if (amount <=40525){
+            return amount*0.12 + 995;
+        }
+        else if (amount <=86375){
+            return 4664 + amount * 0.22;
+        }
+        else if (amount<=164925){
+            return 14751 + amount * 0.24;
+        }
+        else return 0;
     }
 
 
@@ -191,7 +217,9 @@ savings_percent = 0.2;
             // }
         }
 
-        result+="\nOver the years, you earned a total of $"+earnings;
+        result+="\nOver the years, you earned a gross total of $"+earnings;
+        result+="\nYou paid $"+taxes+" in taxes";
+        result+="\n$"+BILLS*13+" went to pay bills";
         result += "\nFrom that amount, you invested  "+(invest_percent*100)+"%, and now your investments total in $"+investments;
         result += "\nAlso, you chose to save "+(savings_percent*100)+"%, and now you have $"+savings+" in savings.";
 
