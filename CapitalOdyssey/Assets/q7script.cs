@@ -81,7 +81,7 @@ public class q7script : MonoBehaviour
 
 
     public void ContinueInvestmentInfo(){
-        if (PersistentData.Instance.invest = false){
+        if (PersistentData.Instance.invest == false){
             SceneManager.LoadScene("q5");
         }
         else SceneManager.LoadScene("q7a");
