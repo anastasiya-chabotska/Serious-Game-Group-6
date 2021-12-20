@@ -181,5 +181,11 @@ public class canvas : MonoBehaviour
     }
 
 
+    public void PlayAgain(){
+     
+        SceneManager.LoadScene("Menu copy");
+    }
+
+
   
 }

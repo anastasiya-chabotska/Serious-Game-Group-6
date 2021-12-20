@@ -58,6 +58,7 @@ public class PersistentData : MonoBehaviour
     {
         if (Instance == null)
         {
+            Debug.Log("NEW INSTANCE");
             DontDestroyOnLoad(this);
             Instance = this;
         }
@@ -189,6 +190,13 @@ savings_percent = 0.2;
 
 
     public string Results(){
+
+
+        if (earnings == 0){
+            string result = "Play the Game First To See the Results!";
+            return result;
+        }
+        else {
         string result = "From the age of 18 to 35: ";
         if (isCuny){
             result += "\nYou chose to go to CUNY College which costed $"+education_cost;
@@ -223,7 +231,13 @@ savings_percent = 0.2;
         result += "\nFrom that amount, you invested  "+(invest_percent*100)+"%, and now your investments total in $"+investments;
         result += "\nAlso, you chose to save "+(savings_percent*100)+"%, and now you have $"+savings+" in savings.";
 
+
+        //Destroy(gameObject);
+
         return result;
+        }
+
+   
 
 
        
